@@ -8,89 +8,108 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Main Palette - Sophisticated & Technological */
+    --background: 32 33% 97%;
+    --foreground: 261 23% 20%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 32 33% 97%;
+    --card-foreground: 261 23% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 261 23% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 261 31% 26%;
+    --primary-foreground: 32 33% 97%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 32 25% 91%;
+    --secondary-foreground: 261 31% 26%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 32 25% 91%;
+    --muted-foreground: 261 12% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 20 48% 54%;
+    --accent-foreground: 32 33% 97%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 32 33% 97%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 32 25% 91%;
+    --input: 32 25% 91%;
+    --ring: 261 31% 26%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Brand Colors */
+    --copper: 20 48% 54%;
+    --purple-tech: 261 31% 26%;
+    --purple-vibrant: 261 42% 46%;
+    --purple-electric: 261 100% 69%;
+    --copper-dark: 20 42% 46%;
+    --cream-light: 32 33% 97%;
+    --cream-warm: 32 42% 94%;
+    --dark-bg: 271 38% 11%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(20 48% 54%) 0%, hsl(261 31% 26%) 100%);
+    --gradient-copper-purple: linear-gradient(90deg, hsl(20 48% 54%) 0%, hsl(261 31% 26%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(20 42% 46%) 0%, hsl(261 100% 69%) 100%);
+    
+    /* Shadows */
+    --shadow-copper: 0 10px 40px -10px hsl(20 48% 54% / 0.3);
+    --shadow-purple: 0 10px 40px -10px hsl(261 31% 26% / 0.3);
+    --shadow-elevation: 0 4px 20px hsl(261 31% 26% / 0.1);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 32 33% 97%;
+    --sidebar-foreground: 261 23% 20%;
+    --sidebar-primary: 261 31% 26%;
+    --sidebar-primary-foreground: 32 33% 97%;
+    --sidebar-accent: 32 25% 91%;
+    --sidebar-accent-foreground: 261 31% 26%;
+    --sidebar-border: 32 25% 91%;
+    --sidebar-ring: 261 31% 26%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 271 38% 11%;
+    --foreground: 32 42% 94%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 271 38% 11%;
+    --card-foreground: 32 42% 94%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 271 38% 11%;
+    --popover-foreground: 32 42% 94%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 261 100% 69%;
+    --primary-foreground: 271 38% 11%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 261 20% 20%;
+    --secondary-foreground: 32 42% 94%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 261 20% 20%;
+    --muted-foreground: 32 20% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 20 42% 46%;
+    --accent-foreground: 32 42% 94%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 32 42% 94%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 261 20% 20%;
+    --input: 261 20% 20%;
+    --ring: 261 100% 69%;
+
+    --sidebar-background: 271 38% 11%;
+    --sidebar-foreground: 32 42% 94%;
+    --sidebar-primary: 261 100% 69%;
+    --sidebar-primary-foreground: 271 38% 11%;
+    --sidebar-accent: 261 20% 20%;
+    --sidebar-accent-foreground: 32 42% 94%;
+    --sidebar-border: 261 20% 20%;
+    --sidebar-ring: 261 100% 69%;
   }
 }
 
@@ -100,6 +119,56 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(20 48% 54%) 0%, hsl(261 31% 26%) 100%);
+  }
+  
+  .gradient-copper-purple {
+    background: linear-gradient(90deg, hsl(20 48% 54%) 0%, hsl(261 31% 26%) 100%);
+  }
+  
+  .gradient-dark {
+    background: linear-gradient(135deg, hsl(20 42% 46%) 0%, hsl(261 100% 69%) 100%);
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, hsl(20 48% 54%) 0%, hsl(261 31% 26%) 100%);
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+  
+  @keyframes glow {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
   }
 }
