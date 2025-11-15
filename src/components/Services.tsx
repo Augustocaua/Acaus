@@ -1,5 +1,6 @@
 import { Bot, Megaphone, BarChart3, Network } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import Reveal from "@/components/Reveal";
 
 const Services = () => {
   const services = [
@@ -7,12 +8,12 @@ const Services = () => {
       icon: Bot,
       title: "IA de Atendimento e Disparos",
       description:
-        "Chatbots inteligentes e automação de mensagens para engajar clientes 24/7 com respostas personalizadas.",
+        "IA que Atua, Responde e Gera Resultados. Mais que um chatbot — um agente inteligente que interage, qualifica leads e dispara mensagens estratégicas, criando experiências automatizadas e humanas.",
       color: "from-purple-vibrant to-purple-electric",
     },
     {
       icon: Megaphone,
-      title: "Automação de Tráfego Pago",
+      title: "Automação Inteligente",
       description:
         "Otimização automática de campanhas, análise preditiva de desempenho e gestão inteligente de anúncios.",
       color: "from-copper to-copper-dark",
@@ -34,27 +35,18 @@ const Services = () => {
   ];
 
   return (
-    <section id="solucoes" className="py-24 bg-secondary/30">
+    <section id="produtos" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Nossas <span className="text-gradient">Soluções</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Tecnologia de ponta para automatizar, otimizar e escalar seu negócio.
-            </p>
-          </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <Card
-                  key={index}
-                  className="group p-8 border-border hover:border-copper transition-all duration-500 hover:shadow-[0_20px_50px_-10px_hsl(20_48%_54%/0.3)] animate-fade-in overflow-hidden relative"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
+                <Reveal key={index} delay={index * 100}>
+                  <Card
+                    className="group p-8 border-border hover:border-copper transition-all duration-500 hover:shadow-[0_20px_50px_-10px_hsl(20_48%_54%/0.3)] overflow-hidden relative"
+                  >
                   {/* Gradient Background on Hover */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
                   
@@ -67,7 +59,8 @@ const Services = () => {
                     </h3>
                     <p className="text-muted-foreground leading-relaxed">{service.description}</p>
                   </div>
-                </Card>
+                  </Card>
+                 </Reveal>
               );
             })}
           </div>

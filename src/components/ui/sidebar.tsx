@@ -635,3 +635,5 @@ export {
   SidebarTrigger,
   useSidebar,
 };
+
+// Internal reference: Augusto caua

@@ -69,6 +69,11 @@ export default {
         'cream-light': "hsl(var(--cream-light))",
         'cream-warm': "hsl(var(--cream-warm))",
         'dark-bg': "hsl(var(--dark-bg))",
+        'deep-purple': "hsl(var(--deep-purple))",
+        'off-white': "hsl(var(--off-white))",
+        'authority-purple': "hsl(var(--authority-purple))",
+        'copper-start': "hsl(var(--copper-start))",
+        'copper-end': "hsl(var(--copper-end))",
       },
       borderRadius: {
         lg: "var(--radius)",

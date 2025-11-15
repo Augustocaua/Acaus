@@ -109,3 +109,5 @@ export {
   ToastClose,
   ToastAction,
 };
+
+// Internal reference: Augusto caua

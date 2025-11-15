@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageSquare } from "lucide-react";
+import { ArrowRight, MessageSquare, Instagram, Mail } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 const CTA = () => {
   return (
@@ -7,16 +8,19 @@ const CTA = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="relative rounded-3xl overflow-hidden bg-gradient-hero p-12 md:p-16 text-center shadow-2xl animate-fade-in">
+            <div className="absolute inset-0 bg-black/40" />
             {/* Decorative Elements */}
             <div className="absolute top-10 right-10 w-20 h-20 border-2 border-primary-foreground/20 rounded-full" />
             <div className="absolute bottom-10 left-10 w-32 h-32 border-2 border-primary-foreground/20 rounded-full" />
             
             <div className="relative z-10 space-y-6">
-              <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 px-4 py-2 rounded-full text-primary-foreground mb-4">
-                <MessageSquare size={16} />
-                <span className="text-sm font-medium">Fale conosco agora</span>
-              </div>
-
+              <Reveal delay={0}>
+                <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 px-4 py-2 rounded-full text-primary-foreground mb-4">
+                  <MessageSquare size={16} />
+                  <span className="text-sm font-medium">Fale conosco agora</span>
+                </div>
+              </Reveal>
+              
               <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
                 Pronto para automatizar o seu negócio?
               </h2>
@@ -25,7 +29,13 @@ const CTA = () => {
                 Entre em contato e descubra como a Acaus pode levar sua empresa para o próximo nível
                 com inteligência artificial e automação.
               </p>
-
+              
+              <Reveal delay={100}>
+                <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+                  Pronto para automatizar o seu negócio?
+                </h2>
+              </Reveal>
+              
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button variant="hero" size="lg" className="group bg-primary-foreground text-purple-tech hover:bg-primary-foreground/90">
                   Falar com Especialista
@@ -35,26 +45,40 @@ const CTA = () => {
                   Agendar Demonstração
                 </Button>
               </div>
-
+              
               {/* Contact Options */}
-              <div className="flex flex-wrap items-center justify-center gap-6 pt-8 text-primary-foreground/80">
-                <a
-                  href="https://wa.me/5511999999999"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-primary-foreground transition-colors"
-                >
-                  <MessageSquare size={18} />
-                  <span>WhatsApp</span>
-                </a>
-                <span className="text-primary-foreground/40">|</span>
-                <a
-                  href="mailto:contato@acaus.com"
-                  className="flex items-center gap-2 hover:text-primary-foreground transition-colors"
-                >
-                  <span>contato@acaus.com</span>
-                </a>
-              </div>
+              <Reveal delay={200}>
+                <div className="flex flex-wrap items-center justify-center gap-6 pt-8 text-primary-foreground/80">
+                  <a
+                    href="https://wa.me/557182875822"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-primary-foreground transition-colors"
+                  >
+                    <MessageSquare size={18} />
+                    <span>WhatsApp</span>
+                  </a>
+                  <span className="text-primary-foreground/40">|</span>
+                  <a
+                    href="https://www.instagram.com/acausvision/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-primary-foreground transition-colors"
+                  >
+                    <Instagram size={18} />
+                    <span>@acausvision</span>
+                  </a>
+                  <span className="text-primary-foreground/40">|</span>
+                
+                  <a
+                    href="mailto:acausvision@gmail.com"
+                    className="flex items-center gap-2 hover:text-primary-foreground transition-colors"
+                  >
+                    <Mail size={18} />
+                    <span>acausvision@gmail.com</span>
+                  </a>
+                </div>
+              </Reveal>
             </div>
           </div>
         </div>

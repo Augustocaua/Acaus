@@ -1,4 +1,6 @@
-import { Instagram, Linkedin, MessageSquare } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Instagram, Linkedin, MessageSquare, Mail, Phone } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -21,13 +23,13 @@ const Footer = () => {
               <h3 className="font-semibold mb-4">Navegação</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#inicio" className="text-primary-foreground/80 hover:text-copper transition-colors">
+                  <Link to="/" className="text-primary-foreground/80 hover:text-copper transition-colors">
                     Início
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#solucoes" className="text-primary-foreground/80 hover:text-copper transition-colors">
-                    Soluções
+                  <a href="/produtos" className="text-primary-foreground/80 hover:text-copper transition-colors">
+                    Produtos
                   </a>
                 </li>
                 <li>
@@ -36,8 +38,8 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#projetos" className="text-primary-foreground/80 hover:text-copper transition-colors">
-                    Portfólio
+                  <a href="/sobre" className="text-primary-foreground/80 hover:text-copper transition-colors">
+                    Sobre nós
                   </a>
                 </li>
               </ul>
@@ -48,7 +50,7 @@ const Footer = () => {
               <h3 className="font-semibold mb-4">Serviços</h3>
               <ul className="space-y-2 text-sm text-primary-foreground/80">
                 <li>IA de Atendimento</li>
-                <li>Automação de Tráfego</li>
+                <li>Automação Inteligente</li>
                 <li>Dashboards Inteligentes</li>
                 <li>Integração de Sistemas</li>
               </ul>
@@ -56,36 +58,48 @@ const Footer = () => {
 
             {/* Contact */}
             <div>
-              <h3 className="font-semibold mb-4">Contato</h3>
+              <Reveal delay={0}>
+                <h3 className="font-semibold mb-4">Contato</h3>
+              </Reveal>
               <ul className="space-y-2 text-sm text-primary-foreground/80">
-                <li>contato@acaus.com</li>
-                <li>+55 (11) 99999-9999</li>
+                <Reveal delay={100}>
+                  <li><a href="mailto:acausvision@gmail.com" className="hover:text-copper">acausvision@gmail.com</a></li>
+                </Reveal>
+                <Reveal delay={200}>
+                  <li><a href="tel:+557182875822" className="hover:text-copper">+55 71 8287-5822</a></li>
+                </Reveal>
               </ul>
               <div className="flex gap-4 mt-6">
-                <a
-                  href="https://www.instagram.com/acausvision/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-copper flex items-center justify-center transition-all duration-300 hover:scale-110"
-                >
-                  <Instagram size={20} />
-                </a>
-                <a
-                  href="https://wa.me/5511999999999"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-copper flex items-center justify-center transition-all duration-300 hover:scale-110"
-                >
-                  <MessageSquare size={20} />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-copper flex items-center justify-center transition-all duration-300 hover:scale-110"
-                >
-                  <Linkedin size={20} />
-                </a>
+                <Reveal delay={0}>
+                  <a
+                    href="https://www.instagram.com/acausvision/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-copper flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  >
+                    <Instagram size={20} />
+                  </a>
+                </Reveal>
+                <Reveal delay={100}>
+                  <a
+                    href="https://wa.me/557182875822"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-copper flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  >
+                    <MessageSquare size={20} />
+                  </a>
+                </Reveal>
+                <Reveal delay={200}>
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-copper flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  >
+                    <Linkedin size={20} />
+                  </a>
+                </Reveal>
               </div>
             </div>
           </div>

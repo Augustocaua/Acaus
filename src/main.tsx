@@ -1,3 +1,4 @@
+// Internal reference: Augusto caua
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";

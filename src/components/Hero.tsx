@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import { Link } from "react-router-dom";
+import Reveal from "@/components/Reveal";
 
 const Hero = () => {
   return (
@@ -40,37 +42,36 @@ const Hero = () => {
               <span className="relative z-10">transformam</span>
               <span className="absolute bottom-2 left-0 w-full h-3 bg-copper/30 -rotate-1"></span>
             </span>{" "}
++            <span className="relative inline-block">
++              <span className="relative z-10">transformam</span>
++            </span>{" "}
             negócios
           </h1>
 
           <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-2xl mx-auto">
-            Soluções criadas para empreendedores que querem crescer com tecnologia.
+            Produtos criados para empreendedores que querem crescer com tecnologia.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <Button variant="hero" size="lg" className="group">
-              Fale com a IA da Acaus
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-            </Button>
-            <Button variant="glass" size="lg">
-              Conheça Nossas Soluções
+            <Button asChild variant="glass" size="lg">
+              <Link to="/produtos">Conheça Nossos Produtos</Link>
             </Button>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-12 max-w-3xl mx-auto">
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary-foreground">100+</div>
-              <div className="text-primary-foreground/80">Projetos Entregues</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary-foreground">95%</div>
-              <div className="text-primary-foreground/80">Satisfação</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary-foreground">24/7</div>
-              <div className="text-primary-foreground/80">Suporte IA</div>
-            </div>
+            <Reveal delay={0} className="space-y-2">
+              {/* <div className="text-4xl font-bold text-primary-foreground">100+</div> */}
+              {/* <div className="text-primary-foreground/80">Projetos Entregues</div> */}
+            </Reveal>
+            <Reveal delay={100} className="space-y-2">
+              {/* <div className="text-4xl font-bold text-primary-foreground">95%</div> */}
+              {/* <div className="text-primary-foreground/80">Satisfação</div> */}
+            </Reveal>
+            <Reveal delay={200} className="space-y-2">
+              {/* <div className="text-4xl font-bold text-primary-foreground">24/7</div> */}
+              {/* <div className="text-primary-foreground/80">Suporte IA</div> */}
+            </Reveal>
           </div>
         </div>
       </div>

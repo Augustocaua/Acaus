@@ -1,6 +1,8 @@
+// Internal reference: Augusto caua
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import Reveal from "@/components/Reveal";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,11 +17,16 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+    // Se estiver em outra página, primeiro navegue para a home
+    if (window.location.pathname !== "/") {
+      window.location.href = `/#${id}`;
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -30,44 +37,52 @@ const Header = () => {
     >
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-gradient">Acaus</div>
+          {/* Logo */}
+          <Reveal delay={0}>
+            <Link to="/">
+              <img
+                src="/Acaus logo.png"
+                alt="Acaus"
+                className="h-10 w-auto object-contain"
+              />
+            </Link>
+          </Reveal>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection("inicio")}
-              className="text-foreground hover:text-copper transition-colors duration-300"
-            >
-              Início
-            </button>
-            <button
-              onClick={() => scrollToSection("solucoes")}
-              className="text-foreground hover:text-copper transition-colors duration-300"
-            >
-              Soluções
-            </button>
-            <button
-              onClick={() => scrollToSection("automacao")}
-              className="text-foreground hover:text-copper transition-colors duration-300"
-            >
-              IA & Automação
-            </button>
-            <button
-              onClick={() => scrollToSection("projetos")}
-              className="text-foreground hover:text-copper transition-colors duration-300"
-            >
-              Portfólio
-            </button>
-            <button
-              onClick={() => scrollToSection("contato")}
-              className="text-foreground hover:text-copper transition-colors duration-300"
-            >
-              Contato
-            </button>
-            <Button variant="hero" size="default">
-              Fale com a IA
-            </Button>
-          </div>
+          <Reveal delay={100}>
+            <div className="hidden md:flex items-center gap-8">
+              <Link
+                to="/"
+                className="text-foreground hover:text-copper transition-colors duration-300"
+              >
+                Início
+              </Link>
+              <Link
+                to="/produtos"
+                className="text-foreground hover:text-copper transition-colors duration-300"
+              >
+                Produtos
+              </Link>
+              <button
+                onClick={() => scrollToSection("automacao")}
+                className="text-foreground hover:text-copper transition-colors duration-300"
+              >
+                IA & Automação
+              </button>
+              <Link
+                to="/sobre"
+                className="text-foreground hover:text-copper transition-colors duration-300"
+              >
+                Sobre nós
+              </Link>
+              <Link
+                to="/contato"
+                className="text-foreground hover:text-copper transition-colors duration-300"
+              >
+                Contato
+              </Link>
+            </div>
+          </Reveal>
 
           {/* Mobile Menu Button */}
           <button
@@ -81,39 +96,40 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 flex flex-col gap-4 animate-fade-in">
-            <button
-              onClick={() => scrollToSection("inicio")}
+            <Link
+              to="/"
+              onClick={() => setIsMobileMenuOpen(false)}
               className="text-foreground hover:text-copper transition-colors duration-300 text-left"
             >
               Início
-            </button>
-            <button
-              onClick={() => scrollToSection("solucoes")}
+            </Link>
+            <Link
+              to="/produtos"
               className="text-foreground hover:text-copper transition-colors duration-300 text-left"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              Soluções
-            </button>
+              Produtos
+            </Link>
             <button
               onClick={() => scrollToSection("automacao")}
               className="text-foreground hover:text-copper transition-colors duration-300 text-left"
             >
               IA & Automação
             </button>
-            <button
-              onClick={() => scrollToSection("projetos")}
+            <Link
+              to="/sobre"
+              onClick={() => setIsMobileMenuOpen(false)}
               className="text-foreground hover:text-copper transition-colors duration-300 text-left"
             >
-              Portfólio
-            </button>
-            <button
-              onClick={() => scrollToSection("contato")}
+              Sobre nós
+            </Link>
+            <Link
+              to="/contato"
+              onClick={() => setIsMobileMenuOpen(false)}
               className="text-foreground hover:text-copper transition-colors duration-300 text-left"
             >
               Contato
-            </button>
-            <Button variant="hero" size="default" className="w-full">
-              Fale com a IA
-            </Button>
+            </Link>
           </div>
         )}
       </nav>
