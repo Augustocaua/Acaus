@@ -32,11 +32,7 @@ const Footer = () => {
                     Produtos
                   </a>
                 </li>
-                <li>
-                  <a href="#automacao" className="text-primary-foreground/80 hover:text-copper transition-colors">
-                    IA & Automação
-                  </a>
-                </li>
+
                 <li>
                   <a href="/sobre" className="text-primary-foreground/80 hover:text-copper transition-colors">
                     Sobre nós

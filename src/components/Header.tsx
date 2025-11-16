@@ -63,12 +63,7 @@ const Header = () => {
               >
                 Produtos
               </Link>
-              <button
-                onClick={() => scrollToSection("automacao")}
-                className="text-foreground hover:text-copper transition-colors duration-300"
-              >
-                IA & Automação
-              </button>
+
               <Link
                 to="/sobre"
                 className="text-foreground hover:text-copper transition-colors duration-300"
@@ -110,12 +105,7 @@ const Header = () => {
             >
               Produtos
             </Link>
-            <button
-              onClick={() => scrollToSection("automacao")}
-              className="text-foreground hover:text-copper transition-colors duration-300 text-left"
-            >
-              IA & Automação
-            </button>
+
             <Link
               to="/sobre"
               onClick={() => setIsMobileMenuOpen(false)}
