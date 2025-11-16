@@ -1,4 +1,4 @@
-import { Bot, Megaphone, BarChart3, Network } from "lucide-react";
+import { Bot, Megaphone, BarChart3, Network, LayoutDashboard } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import Reveal from "@/components/Reveal";
 
@@ -31,6 +31,13 @@ const Services = () => {
       description:
         "Conectamos suas ferramentas e processos em um ecossistema integrado e automatizado.",
       color: "from-copper-dark to-purple-electric",
+    },
+    {
+      icon: LayoutDashboard,
+      title: "Desenvolvimento de Sites e Landing Pages",
+      description:
+        "Criação de sites profissionais e páginas de vendas (landing pages) otimizadas para conversão, performance e SEO.",
+      color: "from-purple-electric to-copper",
     },
   ];
 

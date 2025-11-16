@@ -14,7 +14,7 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="text-2xl font-bold">Acaus</div>
               <p className="text-primary-foreground/80 text-sm">
-                Transformando negócios através de inteligência artificial e automação inteligente.
+                Transformando negócios através de inteligência artificial, automação inteligente e desenvolvimento de sites e landing pages.
               </p>
             </div>
 
@@ -53,6 +53,7 @@ const Footer = () => {
                 <li>Automação Inteligente</li>
                 <li>Dashboards Inteligentes</li>
                 <li>Integração de Sistemas</li>
+                <li>Desenvolvimento de Sites e Landing Pages</li>
               </ul>
             </div>
 

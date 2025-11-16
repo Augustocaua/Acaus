@@ -16,7 +16,7 @@ const Produtos = () => {
               </Reveal>
               <Reveal delay={100}>
                 <p className="text-lg text-muted-foreground">
-                  Explore nossos produtos de IA e automação: prontos para acelerar seu crescimento.
+                  Explore nossos produtos de IA e automação — e nosso desenvolvimento de sites e landing pages (páginas de vendas) — prontos para acelerar seu crescimento.
                 </p>
               </Reveal>
             </div>
