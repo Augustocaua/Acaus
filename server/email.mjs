@@ -3,6 +3,10 @@ import express from 'express';
 import cors from 'cors';
 import { Resend } from 'resend';
 import nodemailer from 'nodemailer';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import slowDown from 'express-slow-down';
+import { z } from 'zod';
 
 const app = express();
 
@@ -16,7 +20,8 @@ app.use(
     allowedHeaders: ['Content-Type'],
   })
 );
-app.use(express.json());
+app.use(express.json({ limit: '10kb' }));
+app.use(helmet());
 
 // Detectar configuração de SMTP e Resend
 const hasSMTP = !!(
@@ -44,16 +49,58 @@ if (hasSMTP) {
 // Inicializar Resend somente se houver chave
 const resend = hasResend ? new Resend(process.env.RESEND_API_KEY) : null;
 
-app.post('/api/send-contact', async (req, res) => {
-  try {
-    const { nome, email, empresa, mensagem } = req.body || {};
+// (rota duplicada removida; versão com validação e proteção está abaixo)
 
-    if (!nome || !email) {
-      return res.status(400).json({ ok: false, error: 'Nome e Email são obrigatórios.' });
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Email server listening on http://localhost:${PORT}`);
+  console.log(`SMTP configurado: ${hasSMTP}`);
+  console.log(`Resend configurado: ${hasResend}`);
+});
+
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+const contactSpeed = slowDown({
+  windowMs: 60 * 1000,
+  delayAfter: 3,
+  delayMs: 500,
+});
+const contactSchema = z.object({
+  nome: z.string().min(2).max(100),
+  email: z.string().email().max(200),
+  empresa: z.string().max(100).optional(),
+  mensagem: z.string().max(2000).optional(),
+  website: z.string().optional(), // honeypot
+});
+
+const sanitize = (s = '') => s.replace(/[\u0000-\u001F\u007F]/g, '').replace(/[<>]/g, '').trim();
+const limitStr = (s = '', n = 200) => (s.length > n ? s.slice(0, n) : s);
+
+app.post('/api/send-contact', contactLimiter, contactSpeed, async (req, res) => {
+  try {
+    const parsed = contactSchema.safeParse(req.body || {});
+    if (!parsed.success) {
+      return res.status(400).json({ ok: false, error: 'Dados inválidos.' });
     }
 
-    const subject = `Contato - ${nome}`;
-    const text = `Nome: ${nome}\nEmail: ${email}\nEmpresa: ${empresa || '-'}\n\nMensagem:\n${mensagem || '-'}`;
+    const { nome, email, empresa, mensagem, website } = parsed.data;
+
+    // honeypot: se preenchido, bloquear
+    if (website && website.trim()) {
+      return res.status(400).json({ ok: false, error: 'Solicitação inválida.' });
+    }
+
+    const sNome = limitStr(sanitize(nome), 100);
+    const sEmail = limitStr(sanitize(email), 200);
+    const sEmpresa = empresa ? limitStr(sanitize(empresa), 100) : undefined;
+    const sMensagem = mensagem ? limitStr(sanitize(mensagem), 2000) : undefined;
+
+    const subject = `Contato - ${sNome}`;
+    const text = `Nome: ${sNome}\nEmail: ${sEmail}\nEmpresa: ${sEmpresa || '-'}\n\nMensagem:\n${sMensagem || '-'}`;
 
     // Tentar via SMTP primeiro, se configurado
     if (transporter) {
@@ -93,11 +140,4 @@ app.post('/api/send-contact', async (req, res) => {
     console.error('send-contact error:', err);
     return res.status(500).json({ ok: false, error: 'Falha interna ao enviar email.' });
   }
-});
-
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`Email server listening on http://localhost:${PORT}`);
-  console.log(`SMTP configurado: ${hasSMTP}`);
-  console.log(`Resend configurado: ${hasResend}`);
 });

@@ -49,10 +49,11 @@ const Contato = () => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const nome = String(formData.get("nome") || "");
-    const email = String(formData.get("email") || "");
-    const empresa = String(formData.get("empresa") || "");
-    const mensagem = String(formData.get("mensagem") || "");
+    const nome = String(formData.get("nome") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const empresa = String(formData.get("empresa") || "").trim();
+    const mensagem = String(formData.get("mensagem") || "").trim();
+    const website = String(formData.get("website") || "");
 
     const nomeError = validateNome(nome);
     const emailError = validateEmail(email);
@@ -74,7 +75,7 @@ const Contato = () => {
         const resp = await fetch("http://localhost:4000/api/send-contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ nome, email, empresa, mensagem }),
+          body: JSON.stringify({ nome, email, empresa, mensagem, website }),
         });
         if (resp.ok) return true;
         return false;
@@ -117,6 +118,16 @@ const Contato = () => {
                 <Reveal delay={100}>
 
                   <form noValidate onSubmit={handleSubmit} className="space-y-4 bg-card border border-border rounded-xl p-6 shadow-sm">
+                    <div aria-hidden className="sr-only">
+                      <input
+                        type="text"
+                        name="website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        aria-hidden="true"
+                        style={{ position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}
+                      />
+                    </div>
                     <div className="space-y-2">
                       <Label htmlFor="nome">Nome</Label>
 
