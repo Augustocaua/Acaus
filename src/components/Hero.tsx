@@ -1,83 +1,83 @@
 import { Button } from "@/components/ui/button";
-import { Sparkles } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
-import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
+  const scrollToContact = () => {
+    document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section
-      id="inicio"
+      id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image with Gradient Overlay */}
+      {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroBg}
-          alt="AI Technology Background"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={heroBg}
           className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-copper/90 via-purple-tech/90 to-dark-bg/95" />
-      </div>
-
-      {/* Animated Particles */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-20 left-20 w-2 h-2 bg-copper rounded-full animate-pulse" />
-        <div className="absolute top-40 right-32 w-3 h-3 bg-purple-electric rounded-full animate-glow" />
-        <div className="absolute bottom-40 left-40 w-2 h-2 bg-copper rounded-full animate-pulse delay-1000" />
-        <div className="absolute bottom-20 right-20 w-3 h-3 bg-purple-electric rounded-full animate-glow delay-500" />
+        >
+          <source src="/video logo.mp4" type="video/mp4" />
+          {/* Fallback text/image for older browsers */}
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Overlay - Gradient/Dark to ensure readability */}
+        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/90 z-10" />
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 z-10 text-center">
-        <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 px-4 py-2 rounded-full text-primary-foreground mb-4">
-            <Sparkles size={16} className="text-copper" />
-            <span className="text-sm font-medium">Inovação em IA & Automação</span>
-          </div>
+      <div className="container mx-auto px-4 z-20 text-center relative">
+        <div className="max-w-5xl mx-auto space-y-8">
+          <Reveal delay={0}>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight tracking-tight drop-shadow-2xl">
+              Design, Tecnologia <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-copper to-purple-vibrant">
+                & Inovação.
+              </span>
+            </h1>
+          </Reveal>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground leading-tight">
-            Desevolvimento Inteligente e IA que {" "}
-            <span className="relative inline-block">
-              <span className="relative z-10">transformam</span>
-              <span className="absolute bottom-2 left-0 w-full h-3 bg-copper/30 -rotate-1"></span>
-            </span>{" "}
-            negócios
-          </h1>
+          <Reveal delay={200}>
+            <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto font-light leading-relaxed drop-shadow-md">
+              Transformamos ideias em experiências digitais de alto impacto. <br className="hidden md:block" />
+              Branding, design e tecnologia para marcas que buscam o extraordinário.
+            </p>
+          </Reveal>
 
-          <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-2xl mx-auto">
-            Produtos criados para empreendedores que querem crescer com tecnologia.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <Button asChild variant="glass" size="lg">
-              <Link to="/produtos">Conheça Nossos Produtos</Link>
-            </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-12 max-w-3xl mx-auto">
-            <Reveal delay={0} className="space-y-2">
-              {/* <div className="text-4xl font-bold text-primary-foreground">100+</div> */}
-              {/* <div className="text-primary-foreground/80">Projetos Entregues</div> */}
-            </Reveal>
-            <Reveal delay={100} className="space-y-2">
-              {/* <div className="text-4xl font-bold text-primary-foreground">95%</div> */}
-              {/* <div className="text-primary-foreground/80">Satisfação</div> */}
-            </Reveal>
-            <Reveal delay={200} className="space-y-2">
-              {/* <div className="text-4xl font-bold text-primary-foreground">24/7</div> */}
-              {/* <div className="text-primary-foreground/80">Suporte IA</div> */}
-            </Reveal>
-          </div>
+          <Reveal delay={400}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
+              <Button 
+                onClick={scrollToContact}
+                size="lg" 
+                className="bg-copper hover:bg-copper-dark text-white rounded-full px-10 py-8 text-lg transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(193,103,55,0.3)] hover:shadow-[0_0_30px_rgba(193,103,55,0.5)] border border-transparent"
+              >
+                Solicitar Projeto
+              </Button>
+              <Button 
+                onClick={scrollToContact}
+                variant="outline" 
+                size="lg" 
+                className="bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white rounded-full px-10 py-8 text-lg backdrop-blur-sm transition-all duration-300"
+              >
+                Falar com Especialista
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-primary-foreground/50 rounded-full animate-pulse" />
-        </div>
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce hidden md:block">
+        <div className="w-[1px] h-24 bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
       </div>
     </section>
   );

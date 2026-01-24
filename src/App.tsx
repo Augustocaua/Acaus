@@ -3,12 +3,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import Sobre from "./pages/Sobre";
-import Contato from "./pages/Contato";
-import Produtos from "./pages/Produtos";
 import Confirmacao from "./pages/Confirmacao";
 
 const queryClient = new QueryClient();
@@ -21,9 +18,11 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/sobre" element={<Sobre />} />
-          <Route path="/contato" element={<Contato />} />
-          <Route path="/produtos" element={<Produtos />} />
+          {/* Redirect old routes to home for One-Page experience */}
+          <Route path="/sobre" element={<Navigate to="/" replace />} />
+          <Route path="/contato" element={<Navigate to="/" replace />} />
+          <Route path="/produtos" element={<Navigate to="/" replace />} />
+          
           <Route path="/confirmacao" element={<Confirmacao />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

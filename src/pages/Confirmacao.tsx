@@ -30,6 +30,23 @@ const Confirmacao = () => {
             </div>
           </div>
         </section>
+
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="prose prose-neutral dark:prose-invert text-center mx-auto">
+              <Reveal delay={100}>
+                <p>
+                  Obrigado por entrar em contato! Em breve retornaremos com uma resposta.
+                </p>
+              </Reveal>
+              <Reveal delay={200}>
+                <p>
+                  Enquanto isso, fique à vontade para explorar nossos serviços e projetos.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
