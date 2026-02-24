@@ -7,6 +7,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Confirmacao from "./pages/Confirmacao";
+import DesenvolvimentoWeb from "./pages/DesenvolvimentoWeb";
+import InteligenciaArtificial from "./pages/InteligenciaArtificial";
+import AutomacaoEstrategia from "./pages/AutomacaoEstrategia";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +25,11 @@ const App = () => (
           <Route path="/sobre" element={<Navigate to="/" replace />} />
           <Route path="/contato" element={<Navigate to="/" replace />} />
           <Route path="/produtos" element={<Navigate to="/" replace />} />
-          
+
+          <Route path="/desenvolvimento-web" element={<DesenvolvimentoWeb />} />
+          <Route path="/inteligencia-artificial" element={<InteligenciaArtificial />} />
+          <Route path="/automacao-estrategia" element={<AutomacaoEstrategia />} />
+
           <Route path="/confirmacao" element={<Confirmacao />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

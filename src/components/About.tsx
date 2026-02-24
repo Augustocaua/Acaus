@@ -26,13 +26,13 @@ const About = () => {
           <Reveal delay={400}>
             <div className="space-y-6 text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
               <p>
-                A ACAUS é um estúdio de soluções digitais focado em branding, design e tecnologia de alto padrão.
-                Nascemos para desafiar o comum, entregando projetos que unem estética apurada e performance real.
+               A ACAUS desenvolve estruturas digitais pensadas para crescimento.
+Criamos sites, landing pages e aplicamos Inteligência Artificial para transformar presença online em estratégia, automação e conversão.
+                Não entregamos apenas projetos — entregamos direção e estrutura para negócios que querem evoluir.
               </p>
               <p>
-                Nosso propósito é claro: transformar a presença digital de empresas ambiciosas, 
-                criando narrativas visuais únicas e produtos tecnológicos que não apenas funcionam, 
-                mas que definem o posicionamento de mercado de nossos clientes.
+               Nosso propósito é estruturar negócios digitalmente para que cresçam com clareza, eficiência e previsibilidade.
+Unimos desenvolvimento estratégico e Inteligência Artificial para transformar presença online em vantagem competitiva.
               </p>
             </div>
           </Reveal>
